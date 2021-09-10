@@ -77,6 +77,20 @@ router.post(
         : checkingAccount.length > 0
         ? checkingAccount[0]
         : savingsAccount[0];
+<<<<<<< HEAD
+=======
+
+    // the request is the same for both auth and identity calls
+    const authAndIdRequest = {
+      access_token: accessToken,
+      options: {
+        account_ids: [account.id],
+      },
+    };
+    // identity info will remain null if not identity
+    let emails = null;
+    let ownerNames = null;
+>>>>>>> lw-accountFunding
 
     // // the request is the same for both auth and identity calls
     // const authAndIdRequest = {
@@ -315,7 +329,11 @@ router.post(
       });
       res.json(resetResponse.data);
     } catch (error) {
+<<<<<<< HEAD
       if (error.response.status === 400) {
+=======
+      if (error.response && error.response.status === 400) {
+>>>>>>> lw-accountFunding
         console.log(
           'Ngrok webhook addresses are only valid for 2 hours and only during the session in which an item is created; for previously created items, no webhook will be received from the call to sandboxItemResetLogin. If your current session has been longer than 2 hours, restart your server to test the item reset login.  Otherwise, create a new item to test. For more information, see the troubleshooting guide in the readme file.'
         );
